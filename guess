@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.util.Random;
+class Game{
+
+    int compNum=0;
+    int count=0;
+    void compNum() {
+        Random rand = new Random();
+        int r = rand.nextInt(100);
+        this.compNum=r;
+    }
+    boolean check(int input){
+        count++;
+        if (input>this.compNum){
+            System.out.println("Your guessed number is greater than computer's number ");
+            return false;
+
+        }
+        else if (input < this.compNum){
+            System.out.println("Your guessed number is smaller than the computer's number");
+            return false;
+        }
+        else if (input == this.compNum){
+            System.out.println("Congratulations! Your guess is correct");
+            return true;
+        }
+        return false;
+    }
+    public int getValue(){
+        return compNum;
+    }
+    public void setValue(int value) {
+        this.compNum = value;
+    }
+}
+
+    public class CWH_game {
+        public static void main(String[] args) {
+
+            System.out.println("It's a GUESS THE NUMBER game.");
+            Scanner sc = new Scanner(System.in);
+            Game game = new Game();
+            game.compNum();
+            System.out.println("Enter your guessed number: ");
+
+            boolean b=true;
+            while (b){
+                int guesser = sc.nextInt();
+                if (game.check(guesser)){
+                    break;
+                }
+            }
+            System.out.println("The computer Guessed : " + game.getValue());
+            System.out.println("You guessed in " + game.count + " chances");
+
+
+
+
+
+
+
+
+
+
+        }
+    }
+
